@@ -1,0 +1,4 @@
+<% @users.each do |u|%>
+<li>
+<%= link_to u.email, photo_path(u.id) %>
+<% end %> 

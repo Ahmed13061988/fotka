@@ -1,0 +1,32 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_for @user do |f| %>
+
+Edit your profile:
+<%= f.label "Please select a profile photo" %>
+<h3>  <%= f.file_field :image %><br> </h3>
+<div style="width:400px; height:auto">
+<%= image_tag (@user.image), style:'width:100%' %>
+</div>
+ <%= link_to f.submit "submit"%> 
+
+<% end %> <br>
+
+
+Edit your Email<br> 
+<%= f.label :email  %>
+<%= f.text_field :email %><br><br>
+Change your password<br>
+<%= f.label :password%>
+<%= f.password_field :password %>
+<%= f.submit "Confirm" %>
+<% end %>

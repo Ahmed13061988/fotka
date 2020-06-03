@@ -1,0 +1,28 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+
+
+<%= f.label :password%>
+<%= f.password_field :password %>
+<%= f.submit "SignUp" %><br>
+
+<%= f.label "Please select a profile photo" %>
+<%= f.file_field :image %><br>
+<%= f.submit "Submit" %> 
+
+ <h2>If you already have an account please <%= link_to(controller: 'sessions', action: 'create') { 'Login' } %> </h2>
+<% end %> 
+
