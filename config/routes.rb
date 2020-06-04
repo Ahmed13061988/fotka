@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   resources :comments
+  resources :users, except: [:new] do
+  resources :photos, only: [:show]
+  end 
   resources :photos
-  resources :users, except: [:new]
 
 
    #signing up 
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
 
    #logging in 
    get '/login', to: 'sessions#new'
-   get '/show', to: 'sessions#show'
    get '/error', to: 'sessions#error'
    post '/login', to: 'sessions#create'
    delete '/logout', to: 'sessions#destroy'

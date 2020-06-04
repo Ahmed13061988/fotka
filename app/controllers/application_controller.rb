@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_by(id: session[:user_id])
+    @user = (User.find_by(id: session[:user_id]) || User.new)
   end
+  
      
 end

@@ -1,29 +1,20 @@
 
 <h2> <%= @user.email.capitalize %>, welcome to your page!!</h2>
 
-<%= form_for @user do |f| %>
-
-
-<%= f.label "Please select a profile photo" %>
-<%= f.file_field :image %><br>
-<%= f.submit "Submit" %> 
 <% if @user.image.attached? %>
 <div style="width:400px; height:auto">
 <%= image_tag (@user.image), style: 'width:100%' %> 
-</div>
- 
- <% end %>
+<% end %>
 
-<% end %> <br>
+
+ <%= render 'photos/show' %>
+
+</div><br>
 
 
 <%= link_to "Edit ", edit_user_path(@user) %><br><br>
-
 <%= link_to 'Logout', {:controller => "sessions", :action => 'destroy'}, :method => :delete %><br><br>
-
 <%= link_to 'Delete Profile', {:controller => "users", :action => 'destroy'}, :method => :delete %><br><br>
-
-
 <%= link_to "All Users", {:controller => "users", :action => 'index'} %>
 
 
