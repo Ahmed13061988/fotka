@@ -5,11 +5,12 @@ class PhotosController < ApplicationController
     end 
 
    def create
-    @user = User.find(session[:user_id])
+    @user = User.new 
     @photo = Photo.new(photo_params)
     @photo.save 
-    # redirect_to user_path(@user.id)
-    redirect_to photo_path 
+    session[:user_id] = @user.id 
+    # redirect_to user_path(@user)
+    redirect_to photo_path(@photo)
    end 
 
    def show 
