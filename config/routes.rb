@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   resources :comments
-  resources :users, except: [:new] do
-  resources :photos, only: [:show]
+  resources :users, except: [:new] do 
+      resources :comments, only: [:show]
   end 
-  resources :photos
+  resources :photos 
+  
 
 
    #signing up 

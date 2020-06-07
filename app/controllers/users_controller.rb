@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   
     def new 
-        @photo = Photo.new
         @user = User.new
     end 
 
@@ -12,7 +11,6 @@ class UsersController < ApplicationController
 
 
     def create
-       @photo = Photo.new 
        @user = User.new(user_params)
        if @user.valid?
         @user.save

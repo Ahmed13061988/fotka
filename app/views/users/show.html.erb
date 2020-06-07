@@ -5,10 +5,8 @@
 <div style="width:400px; height:auto">
 <%= image_tag (@user.image), style: 'width:100%' %> 
 <% end %>
-
- <%= render 'photos/new' %>
- <%= render 'photos/show' %>
-
+<%= link_to(controller: 'photos', action: 'new') { "Add a description" } %>
+<%= link_to(controller: 'comments', action: 'new') { "Add a comment " } %>
 </div><br>
 
 

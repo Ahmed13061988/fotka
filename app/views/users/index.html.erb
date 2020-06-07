@@ -1,4 +1,4 @@
 <% @users.each do |u|%>
 <li>
-<%= link_to u.email, user_path %>
+<%= link_to u.email, user_path(@user) %>
 <% end %> 

@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
     redirect_to signup_path
   end
 
-  private
-
+  
   def current_user 
     @current_user ||= User.find_by_id(session[:id])  
   end 
+
+  private
+
 
   def logged_in? 
     !!current_user 

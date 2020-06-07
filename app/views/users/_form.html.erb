@@ -19,7 +19,6 @@
 <%= f.password_field :password %><br><br>
 <%= f.label "Please select a profile photo" %><br>
 <%= f.file_field :image %><br><br>
-<%= render 'photos/new'%>
 <%= f.submit "Singup" %>
  <h2>If you already have an account please <%= link_to(controller: 'sessions', action: 'create') { 'Login' } %> </h2>
 <% end %> 
