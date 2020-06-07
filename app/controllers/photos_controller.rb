@@ -2,19 +2,21 @@ class PhotosController < ApplicationController
 
     def new 
         @photo = Photo.new
-        @user = User.new 
+    end 
+
+    def index 
+        @photos = Photo.all 
     end 
 
     def create
-      @user = User.new 
+       
       @photo = Photo.create(photo_params)
-      session[:user_id] = @user.id 
-      redirect_to photo_path(@photo) 
+       
+      redirect_to photos_path(@photo) 
     end
 
    def show 
-    @photo = Photo.find(params[:id])
-     
+    @photo = Photo.find(params[:id])     
    end 
 
     
