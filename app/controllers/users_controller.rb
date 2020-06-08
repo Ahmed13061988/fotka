@@ -3,10 +3,12 @@ class UsersController < ApplicationController
   
     def new 
         @user = User.new
+        @user.photos.build 
     end 
 
     def index
         @users = User.all
+
     end 
 
 
@@ -15,7 +17,8 @@ class UsersController < ApplicationController
        if @user.valid?
         @user.save
         session[:user_id] = @user.id 
-        redirect_to user_path(@user)
+         @user.photos.build
+        redirect_to @user
        else 
         render :new 
        end 
@@ -51,6 +54,10 @@ class UsersController < ApplicationController
 
    
     def user_params 
-        params.require(:user).permit(:email, :password, :image)
+        params.require(:user).permit(:email,
+            :password,
+            :image,
+             photos_attributes: [:description]
+         )
     end 
 end

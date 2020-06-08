@@ -1,18 +1,26 @@
 class PhotosController < ApplicationController
 
     def new 
-        @photo = Photo.new
+        @photo = Photo.new(user_id: params[:user_id])
     end 
 
     def index 
-        @photos = Photo.all 
+        @user = User.find(params[:user_id])
+        @photo = @user.photos 
     end 
 
     def create
-       
-      @photo = Photo.create(photo_params)
-       
-      redirect_to photos_path(@photo) 
+      
+        @photo = current_user.photos.build(photo_params)
+        # @user = User.find_by(id: photo_params[:user_id])
+        @user = User.find_by(params[:user_id])
+        @photo.user_id = @user.id
+        current_user = @user.id
+        if @photo.save
+            redirect_to photo_path(@photo)
+        else
+            render :new
+        end
     end
 
    def show 

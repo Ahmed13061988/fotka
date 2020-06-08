@@ -1,14 +1,19 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
+<%# <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com"> %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+<h1>Login</h1>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<%= form_for :user do |f| %>
 
-  <%= f.submit "log in" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required:true %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, required:true %>
+    <br>
+    <br>
+    <%= f.submit "Login"%>
+    <br>
+    <br>
+    <a class="waves-effect waves-light btn-small"<%= link_to "Login with Google", "/auth/google_oauth2" %></a>
  
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
-
-
+    <% end %>

@@ -1,6 +1,13 @@
-<%= form_for :comment, :remote => true do |f| %>
-<%= f.hidden_field 'user_id', @user.id %>
-<%= f.label :comment %>
-<%= f.text_field :content %>
-<%= f.submit "ok" %>
+
+<%= form_for(@comment) do |f| %>
+     <%= f.label :content %>
+     <%= f.text_field :content, required:true %>
+     <br>    
+    <% user_photos.each do |comment|%>         
+         <option value="<%= comment.content %>">  
+         </option>       
+    <%end%>      
+         </datalist>
+    <%= f.submit %>
+
 <% end %>

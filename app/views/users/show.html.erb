@@ -1,13 +1,19 @@
+<h1 class="brown-text"> Welcome <%=@user.email%>!</h1>
 
-<h2> <%= @user.email.capitalize %>, welcome to your page!!</h2>
-
+<br>
+<br>
+<li>
+<%# <% @user.photos.each do |photo| %>
+    <%# <li><%= link_to photo.comments.content, user_photos_path(@user, photo) %></li>
+<%# <% end %> 
+</li>
 <% if @user.image.attached? %>
 <div style="width:400px; height:auto">
 <%= image_tag (@user.image), style: 'width:100%' %> 
 <% end %>
-<%= link_to(controller: 'photos', action: 'new') { "Add a description" } %>
-<%= link_to(controller: 'comments', action: 'new') { "Add a comment " } %>
-</div><br>
+ <%= @user.photos.description %>
+<a class="waves-effect waves-light btn-small"<%= link_to "Add comment ", new_comment_path%></a><br><br>
+
 
 
 <%= link_to "Edit ", edit_user_path(@user) %><br><br>
