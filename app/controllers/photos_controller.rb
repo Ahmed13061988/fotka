@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
     def index 
         @user = User.find(params[:user_id])
-        @photo = @user.photos 
+        @photos = @user.photos 
     end 
 
     def create
@@ -24,13 +24,17 @@ class PhotosController < ApplicationController
     end
 
    def show 
-    @photo = Photo.find(params[:id])     
+    @user = User.find(params[:id])
+    @photo = Photo.find_by(id: params[:id])     
    end 
 
     
  
     private  
     def photo_params 
-        params.require(:photo).permit(:description, :user_id)
+        params.require(:photo).permit(:description,
+             :user_id,
+             comment_attributes: [:content]
+            )
     end 
 end

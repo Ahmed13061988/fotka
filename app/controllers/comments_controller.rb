@@ -3,21 +3,24 @@ class CommentsController < ApplicationController
 
     def new
         @comment = Comment.new
-        @comment.user_id = params[:user_id]
-        user_photos
+        @photo = Photo.new 
+        @comment.photo_id = params[:photo_id]
+        
     end
 
     def index 
-        @comments = Comment.all 
+        @photo = Photo.find_by(params[:photo_id])
+        @comment = @photo.comments 
     end 
 
     
     def create
-        @comment = current_user.comments.build(photo_params)
-        # @user = User.find_by(id: photo_params[:user_id])
+        #  binding.pry 
         @user = User.find_by(params[:user_id])
-        @comment.user_id = @user.id
-        current_user = @user.id
+        @photo= Photo.find_by(params[:photo_id])
+        @comment = @photo.comments.build(comment_params)
+        @comment.photo_id = @photo.id 
+        @comment.user_id = current_user.id
         if @comment.save
             redirect_to comment_path(@comment)
         else
@@ -28,11 +31,16 @@ class CommentsController < ApplicationController
 
 
     def show 
-        @comment = Comment.find_by_id(params[:id])
+        @user = User.find_by(params[:user_id])
+        @photo = Photo.find_by(params[:photo_id])
+        @comment = @user.comments.find_by(params[:user_id])
     end 
 
         private 
         def comment_params
-            params.require(:comment).permit(:content)
+            params.require(:comment).permit(:content, 
+                    :photo_id, 
+                    :user_id
+                )
         end 
 end

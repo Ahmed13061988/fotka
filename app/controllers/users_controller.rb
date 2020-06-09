@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  
+
     def new 
         @user = User.new
         @user.photos.build 
@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-
     end 
 
 
@@ -27,6 +26,7 @@ class UsersController < ApplicationController
    
     
     def show
+        @comment = Comment.find_by(id: params[:id])  
         @photo = Photo.new 
         @user = User.find(params[:id])
     end 

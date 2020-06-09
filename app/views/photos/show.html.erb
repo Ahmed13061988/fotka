@@ -1,4 +1,20 @@
-<%= @photo.description %>
+<h1 class="brown-text"> This is  <%= @user.email%> account !</h1>
+<br>
+<% if @user.image.attached? %>
+<div style="width:400px; height:auto">
+<%= image_tag (@user.image), style: 'width:100%' %> 
+<% end %>
+<br>
+<% @user.photos.each do |d| %>
+<%= d.description %>
+<% end %>
+<br>
+<a class="waves-effect waves-light btn-small"<%= link_to "Add comment ", new_comment_path%></a>
 
+<button onclick="goBack()">Go Back</button>
 
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

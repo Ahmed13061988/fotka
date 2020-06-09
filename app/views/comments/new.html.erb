@@ -3,7 +3,7 @@
      <%= f.label :content %>
      <%= f.text_field :content, required:true %>
      <br>    
-    <% user_photos.each do |comment|%>         
+    <% @photo.comments.each do |comment|%>         
          <option value="<%= comment.content %>">  
          </option>       
     <%end%>      
@@ -11,3 +11,8 @@
     <%= f.submit %>
 
 <% end %>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

@@ -1,7 +1,6 @@
 
 
-
-  <% if @user.errors.any? %>
+<% if @user.errors.any? %>
     <div id="error">
       <ul>
         <% @user.errors.full_messages.each do |message| %>
@@ -20,12 +19,15 @@
 <%= f.label "Please select a profile photo" %><br>
 <%= f.file_field :image %><br><br>
 
-Add a description:
+Add
 <%= f.fields_for :photos do |photo_attributes| %>
   <%= photo_attributes.label :description %>
   <%= photo_attributes.text_field :description %>
-<% end %>
+<% end %><br>
+
 <%= f.submit "Signup"%>
+
 <% end %>
+
 
  <h2>If you already have an account please <%= link_to(controller: 'sessions', action: 'create') { 'Login' } %> </h2>

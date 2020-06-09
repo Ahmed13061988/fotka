@@ -1,1 +1,28 @@
-<%= render 'form', photo: Photo.new %>
+
+    <%= form_for(@photo) do |f|%>
+
+        <% if @photo.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @photo.errors.full_messages.each do |msg| %> 
+      <li class="flash-alert">* <%= msg %></li>
+    <% end %>
+    </ul>
+    </div>
+    <% end %>      
+             </datalist> 
+
+    <br>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <br>
+    <%= f.submit "Submit" %>
+
+    <% end %>
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

@@ -2,30 +2,19 @@
 
 <br>
 <br>
-<li>
-<%# <% @user.photos.each do |photo| %>
-    <%# <li><%= link_to photo.comments.content, user_photos_path(@user, photo) %></li>
-<%# <% end %> 
-</li>
 <% if @user.image.attached? %>
 <div style="width:400px; height:auto">
 <%= image_tag (@user.image), style: 'width:100%' %> 
 <% end %>
- <%= @user.photos.description %>
-<a class="waves-effect waves-light btn-small"<%= link_to "Add comment ", new_comment_path%></a><br><br>
-
-
+<br>
+<% @user.photos.each do |photo| %>
+<h2><%= photo.description %></h2>
+<% end %> <br>
+<% @user.comments.each do |comment|%>
+<%= comment.content %>
+<% end %>
 
 <%= link_to "Edit ", edit_user_path(@user) %><br><br>
 <%= link_to 'Logout', {:controller => "sessions", :action => 'destroy'}, :method => :delete %><br><br>
 <%= link_to 'Delete Profile', {:controller => "users", :action => 'destroy'}, :method => :delete %><br><br>
 <%= link_to "All Users", {:controller => "users", :action => 'index'} %>
-
-
-  
-
-
-
-
-
-

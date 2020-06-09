@@ -1,1 +1,22 @@
-<%= @comment.content %>
+<h1 class="brown-text"> <%= @user.email%> page!</h1>
+
+<br>
+<br>
+<% if @user.image.attached? %>
+<div style="width:400px; height:auto">
+<%= image_tag (@user.image), style: 'width:100%' %> 
+<% end %>
+<br>
+<% @user.photos.each do |photo| %>
+<h2><%= photo.description %></h2>
+<% end %> <br>
+<% @photo.comments.each do |comment| %>
+<h2><%= comment.content %></h2>
+<% end %>
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

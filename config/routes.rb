@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback' => 'sessions#google'
 
   
-  namespace :users  do 
-    resources :photos, :comments
-  end 
+ 
   resources :comments
-  resources :users 
+  resources :users  
   resources :photos
+  # namespace :users do 
+  #   resources :photos 
+  # end 
 
   
 
