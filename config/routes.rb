@@ -13,12 +13,13 @@ Rails.application.routes.draw do
 
   
  
-  resources :comments
+  
   resources :users  
-  resources :photos
-  # namespace :users do 
-  #   resources :photos 
-  # end 
+  resources :photos  do 
+     resources :comments, only: [:new, :create, :show, :index]
+  end 
+  resources :comments
+ 
 
   
 

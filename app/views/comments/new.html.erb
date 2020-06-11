@@ -1,16 +1,12 @@
 
-<%= form_for(@comment) do |f| %>
+<%= form_for [@photo, @comment] do |f| %>
      <%= f.label :content %>
      <%= f.text_field :content, required:true %>
-     <br>    
-    <% @photo.comments.each do |comment|%>         
-         <option value="<%= comment.content %>">  
-         </option>       
-    <%end%>      
-         </datalist>
-    <%= f.submit %>
-
+     <%= f.hidden_field :photo_id %>
+     <br>       
+     <%=  f.submit "Add " %> 
 <% end %>
+
 <script>
 function goBack() {
   window.history.back();

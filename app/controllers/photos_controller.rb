@@ -24,8 +24,11 @@ class PhotosController < ApplicationController
     end
 
    def show 
-    @user = User.find(params[:id])
-    @photo = Photo.find_by(id: params[:id])     
+ 
+     @user = User.find(params[:id])
+     @photo = Photo.find_by(params[:user_id])     
+     @photo = @user.id 
+    
    end 
 
     

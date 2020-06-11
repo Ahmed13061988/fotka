@@ -1,3 +1,4 @@
+
 <h1 class="brown-text"> Welcome <%=@user.email%>!</h1>
 
 <br>
@@ -10,9 +11,10 @@
 <% @user.photos.each do |photo| %>
 <h2><%= photo.description %></h2>
 <% end %> <br>
-<% @user.comments.each do |comment|%>
-<%= comment.content %>
-<% end %>
+<%= link_to "Show the comments ", photo_comment_path(@comment) %>
+
+<br><br>
+
 
 <%= link_to "Edit ", edit_user_path(@user) %><br><br>
 <%= link_to 'Logout', {:controller => "sessions", :action => 'destroy'}, :method => :delete %><br><br>

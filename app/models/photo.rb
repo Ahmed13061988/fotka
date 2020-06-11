@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments 
     belongs_to :user 
-     #accepts_nested_attributes_for :comments
+    #  accepts_nested_attributes_for :comments
     
     
     validates :description, presence: true 
