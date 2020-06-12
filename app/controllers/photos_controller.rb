@@ -10,7 +10,6 @@ class PhotosController < ApplicationController
     end 
 
     def create
-      
         @photo = current_user.photos.build(photo_params)
         # @user = User.find_by(id: photo_params[:user_id])
         @user = User.find_by(params[:user_id])
@@ -24,11 +23,10 @@ class PhotosController < ApplicationController
     end
 
    def show 
- 
+    #  binding.pry 
      @user = User.find(params[:id])
-     @photo = Photo.find_by(params[:user_id])     
-     @photo = @user.id 
-    
+     @photo = Photo.find_by(user_id: params[:user_id])     
+     
    end 
 
     

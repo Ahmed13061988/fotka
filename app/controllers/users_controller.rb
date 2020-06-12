@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 
     def new 
+        @photo = Photo.new 
         @user = User.new
         @user.photos.build 
     end 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
         @user.save
         session[:user_id] = @user.id 
          @user.photos.build
-        redirect_to @user
+        redirect_to @user 
        else 
         render :new 
        end 
@@ -26,11 +27,18 @@ class UsersController < ApplicationController
    
     
     def show
-        @comment = Comment.find_by(id: params[:id])  
-        @photo = Photo.new 
-        @user = User.find(params[:id])
+        @comment = Comment.find(params[:id]) 
+        @user = User.find(params[:id])     
+        @photo = Photo.find(params[:id])
     end 
     
+
+    # def view
+    #     @comment = Comment.find_by(id: params[:id])  
+    #     @photo = Photo.new 
+    #     @user = User.find(params[:id]) 
+    #     redirect_to user_photo_path(@user)
+    # end 
 
 
     def edit 
@@ -57,7 +65,8 @@ class UsersController < ApplicationController
         params.require(:user).permit(:email,
             :password,
             :image,
-             photos_attributes: [:description]
+             photos_attributes: [:description, :user_id],
+             comment_attributes: [:content]
          )
     end 
 end

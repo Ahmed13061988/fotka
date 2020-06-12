@@ -3,7 +3,7 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
     create_table :photos do |t|
       t.string :description 
       t.belongs_to :user
-      t.timestamps
+      t.timestamps 
     end
   end
 end

@@ -11,8 +11,9 @@
 <% @user.photos.each do |photo| %>
 <h2><%= photo.description %></h2>
 <% end %> <br>
-<%= link_to "Show the comments ", photo_comment_path(@comment) %>
-
+<% @photo.comments.each do |k|  %>
+ <h3> Comments:  <%= k.content %> </h3>
+<% end %> <br>
 <br><br>
 
 

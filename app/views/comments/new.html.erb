@@ -1,10 +1,11 @@
 
 <%= form_for [@photo, @comment] do |f| %>
+<%= f.hidden_field :photo_id %>
      <%= f.label :content %>
      <%= f.text_field :content, required:true %>
-     <%= f.hidden_field :photo_id %>
+     
      <br>       
-     <%=  f.submit "Add " %> 
+     <%= f.submit "Add the comment " %> 
 <% end %>
 
 <script>

@@ -5,11 +5,16 @@
   <% @photos.each do |image| %>
     <div class="card">
       <div class="card-body p-1">
-        <%= image_tag photo.photo, class: 'd-block w-100' %>
+        <%# <%= text_field_tag image.user %> 
+        <% @user.photos.each do |photo| %>
+        <h2><%= photo.description %></h2>
+          <% end %> <br>
+          <% if @user.image.attached? %>
+<div style="width:400px; height:auto">
+<%= image_tag (@user.image), style: 'width:100%' %> 
+<% end %>
 
-        <p class="my-1"><%= photo.description %></p>
-
-        <%= link_to "View Image", photo_path(image.id), class: 'btn btn-secondary stretched-link' %>
+        <%= link_to "View Profile", user_photo_path(@user, image.user_id), class: 'btn btn-secondary stretched-link' %>
       </div>
     </div>
   <% end %>

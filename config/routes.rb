@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
+  get '/home' => 'users#show'
   
   delete '/logout' => 'sessions#destroy'
   
@@ -14,7 +16,11 @@ Rails.application.routes.draw do
   
  
   
-  resources :users  
+  resources :users do 
+    resources :photos, only: [:new, :create, :show, :index] do 
+      resources :comments 
+    end 
+  end 
   resources :photos  do 
      resources :comments, only: [:new, :create, :show, :index]
   end 
