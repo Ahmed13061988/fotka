@@ -17,7 +17,7 @@ class UsersController < ApplicationController
        if @user.valid?
         @user.save
         session[:user_id] = @user.id 
-         @user.photos.build
+         @user.photos.build(photo_params)
         redirect_to @user 
        else 
         render :new 
@@ -28,8 +28,9 @@ class UsersController < ApplicationController
     
     def show
         @comment = Comment.find(params[:id]) 
-        @user = User.find(params[:id])     
+        @user = User.find(params[:id]) 
         @photo = Photo.find(params[:id])
+        
     end 
     
 

@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
    def show 
     #  binding.pry 
      @user = User.find(params[:id])
-     @photo = Photo.find_by(user_id: params[:user_id])     
+     @photo = Photo.find(params[:user_id])     
      
    end 
 
